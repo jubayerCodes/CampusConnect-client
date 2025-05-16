@@ -1,0 +1,36 @@
+@import "tailwindcss";
+ @plugin "daisyui" {
+   themes: light --default;
+ }
+
+
+ :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --btn-bg: #0073e1;
+  --secondary-bg: #dbdbdb31;
+  --text-color: #5c727d;
+  --header-bg: #001a33;
+  --label-color: #808191;
+  --input-bg: #ebf2f7;
+}
+
+.section {
+  @apply py-12 xl:py-28;
+}
+
+.my-container {
+  @apply w-full xl:w-[1200px] mx-auto px-5;
+}
+
+.header-btn {
+  @apply bg-[#0073e1] hover:bg-[var(--header-bg)] duration-300 text-sm py-2 px-5 text-white capitalize font-semibold rounded cursor-pointer;
+}
+.primary-btn {
+  @apply bg-[#0073e1] hover:bg-transparent duration-300 text-sm py-2 px-5 text-white capitalize font-semibold rounded cursor-pointer border-[var(--btn-bg)] border hover:text-[var(--btn-bg)];
+}
+
+.secondary-btn {
+  @apply bg-transparent hover:bg-[#0073e1]  duration-300 text-sm py-2 px-5 hover:text-white capitalize font-semibold rounded cursor-pointer border-[var(--btn-bg)] border text-[var(--btn-bg)];
+}
