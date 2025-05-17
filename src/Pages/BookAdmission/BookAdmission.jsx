@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
 
 const BookAdmission = () => {
     const { register, handleSubmit } = useForm()
@@ -54,7 +55,19 @@ const BookAdmission = () => {
 
 
                 const responseData = await response.json();
-                console.log(responseData);
+                if (responseData?.acknowledged) {
+                    toast.success('College Booked', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                }
             }
         } catch (error) { }
     }

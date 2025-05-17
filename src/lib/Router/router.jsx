@@ -7,6 +7,8 @@ import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
 import CollegeDetails from "../../Pages/CollegeDetails/CollegeDetails";
 import Admission from "../../Pages/Admission/Admission";
 import BookAdmission from "../../Pages/BookAdmission/BookAdmission";
+import MyCollege from "../../Pages/MyCollege/MyCollege";
+import PrivateRoute from "../../Routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/colleges",
         element: <Colleges />,
+      },
+      {
+        path: "/my-college",
+        element: <PrivateRoute><MyCollege /></PrivateRoute>
       },
       {
         path: "/colleges/:id",
