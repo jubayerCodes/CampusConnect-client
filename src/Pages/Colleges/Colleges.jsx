@@ -123,6 +123,7 @@ const Colleges = () => {
             "rating": 5.0
         }
     ]
+    
     return (
         <>
             <section className='section'>

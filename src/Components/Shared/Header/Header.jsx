@@ -4,7 +4,7 @@ import { AuthContext } from '../../../Utilities/AuthProvider/AuthProvider';
 
 const Header = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
 
     return (
         <header className='backdrop-blur-sm bg-black/30 shadow-sm mb-[-65px]'>
@@ -35,7 +35,7 @@ const Header = () => {
                 </div>
                 <div className="navbar-end">
                     {user?.email ? (
-                        <Link to={'/profile'} className="btn btn-outline text-white hover:bg-zinc-900">{user?.displayName}</Link>
+                        <button onClick={() => logout()} className="btn btn-outline text-white hover:bg-zinc-900">{user?.displayName}</button>
                     ) : (
                         <Link to={"/login"} className="btn">Student Login</Link>
                     )}

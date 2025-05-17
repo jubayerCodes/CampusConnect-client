@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 const SocialLogin = ({ className }) => {
   const navigate = useNavigate();
-  const { signInWithGoogle } = useContext(AuthContext);
+  const { signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
 
   const handleGoogleLogin = () => {
     signInWithGoogle()
@@ -18,14 +18,40 @@ const SocialLogin = ({ className }) => {
       });
   };
 
+  const handleFacebookLogin = () => {
+    signInWithFacebook()
+      .then(result => {
+        // The signed-in user info.
+        const user = result.user;
+
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  }
+
   return (
-    <div className={`${className}`}>
+    <div className={`${className} flex flex-col items-stretch gap-2`}>
       <button
         onClick={() => handleGoogleLogin()}
         className="bg-[#ed5565] hover:bg-black duration-300 text-base py-2 px-5 text-white capitalize font-semibold rounded-sm flex justify-center items-center gap-2"
         style={{ width: "100%" }}
       >
         Sign Up With Google
+      </button>
+      <button
+        onClick={() => handleFacebookLogin()}
+        className="bg-[blue] hover:bg-black duration-300 text-base py-2 px-5 text-white capitalize font-semibold rounded-sm flex justify-center items-center gap-2"
+        style={{ width: "100%" }}
+      >
+        Sign Up With Facebook
       </button>
     </div>
   );
