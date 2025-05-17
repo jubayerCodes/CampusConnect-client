@@ -18,10 +18,10 @@ const Admission = () => {
                     <h2 className='text-4xl font-semibold text-center'>Admission</h2>
 
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+                    <div className="flex flex-col gap-5 mt-12">
                         {
-                            colleges.map(college => (
-                                <AdmissionCard college={college} key={college?._id} />
+                            colleges.map((college, idx) => (
+                                <AdmissionCard college={college} idx={idx} key={college?._id} />
                             ))
                         }
                     </div>
