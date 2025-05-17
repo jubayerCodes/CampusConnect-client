@@ -14,8 +14,6 @@ const Login = () => {
     const location = useLocation()
     const from = location?.state?.from?.pathname
 
-    const password = watch("password", "");
-
     const { register: registerLogin, handleSubmit: handleSubmitLogin, formState: { errors: errorsLogin }, reset: resetLogin, watch: watchLogin } = useForm()
 
     const navigate = useNavigate();
@@ -23,15 +21,7 @@ const Login = () => {
     const [isRegister, setIsRegister] = useState(false)
 
     const handleRegister = (data) => {
-        const { firstName, lastName, email, password, role } = data
-
-        const user = {
-            firstName,
-            lastName,
-            email,
-            password,
-            role,
-        }
+        const { email, password} = data
 
         signUpWithEmailAndPassword(email, password)
             .then((result) => {
@@ -74,9 +64,6 @@ const Login = () => {
                         </div>
                         <div className={`${isRegister ? '' : 'hidden'}`}>
                             <form onSubmit={handleSubmit(handleRegister)} className={`flex-col items-stretch justify-between `}>
-                                <input required {...register('firstName', { required: true })} placeholder='First Name' className='w-full mb-5 border focus:outline-none p-2 text-sm' type="text" name="firstName" id="firstName-field" />
-
-                                <input required {...register('lastName', { required: true })} placeholder='Last Name' className='w-full mb-5 border focus:outline-none p-2 text-sm' type="text" name="lastName" id="lastName-field" />
 
                                 <input required {...register('email', { required: true })} placeholder='Email' className='w-full mb-5 border focus:outline-none p-2 text-sm' type="email" name="email" id="register-email-field" />
                                 <input required {...register('password', {
@@ -89,20 +76,9 @@ const Login = () => {
 
                                 {errors.password && <span className='form-warning'>{errors.password.message}</span>}
 
-                                <input required {...register('confirmPassword', {
-                                    validate: value =>
-                                        value === password || "Passwords do not match"
-                                })} placeholder='Retype Password' className='w-full mb-5 border focus:outline-none p-2 text-sm' type="password" name="confirmPassword" id="confirm-password-field" />
-
-                                {errors.confirmPassword && <span className='form-warning'>{errors.confirmPassword.message}</span>}
-
-                                <select required {...register('role', { required: true })} placeholder="Select Role" className='w-full mb-5 border focus:outline-none p-2 text-sm capitalize' name="role" id="role-field">
-                                    <option value="">Select Role</option>
-                                    <option value="user">user</option>
-                                    <option value="agent">agent</option>
-                                </select>
                                 <input type="submit" value="Register" className='cursor-pointer w-full mb-5 primary-btn' style={{ width: '100%' }} />
                             </form>
+                            <SocialLogin className={'mt-4'} />
                         </div>
                         <div className='flex justify-between items-center mt-5'>
                             <button onClick={() => setIsRegister(true)} className={`cursor-pointer transition hover:text-[var(--btn-bg)] ${isRegister ? 'hidden' : ''}`}>Register here!</button>

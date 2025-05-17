@@ -4,6 +4,8 @@ import Login from "../../Pages/Login/Login";
 import MainLayout from "../../Layouts/MainLayout/MainLayout";
 import Colleges from "../../Pages/Colleges/Colleges";
 import NotFoundPage from "../../Pages/NotFoundPage/NotFoundPage";
+import CollegeDetails from "../../Pages/CollegeDetails/CollegeDetails";
+import Admission from "../../Pages/Admission/Admission";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +22,17 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/admission",
+        element: <Admission />
+      },
+      {
         path: "/colleges",
         element: <Colleges />,
+      },
+      {
+        path: "/colleges/:id",
+        element: <CollegeDetails />,
+        loader: async ({ params }) => fetch(`${import.meta.env.VITE_API}/colleges/${params.id}`)
       }
     ],
   },

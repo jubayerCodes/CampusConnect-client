@@ -19,49 +19,49 @@ const Gallery = () => {
 
 
 
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-12">
-                        <div class="grid gap-2">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-12">
+                        <div className="grid gap-2">
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation1} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation1} alt="" />
                             </div>
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation2} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation2} alt="" />
                             </div>
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation3} alt="" />
-                            </div>
-                        </div>
-                        <div class="grid gap-2">
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation4} alt="" />
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation5} alt="" />
-                            </div>
-                            <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation6} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation3} alt="" />
                             </div>
                         </div>
-                        <div class="grid gap-2">
+                        <div className="grid gap-2">
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation7} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation4} alt="" />
                             </div>
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation8} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation5} alt="" />
                             </div>
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation9} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation6} alt="" />
                             </div>
                         </div>
-                        <div class="grid gap-2">
+                        <div className="grid gap-2">
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation10} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation7} alt="" />
                             </div>
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation6} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation8} alt="" />
                             </div>
                             <div>
-                                <img class="h-auto max-w-full rounded-lg" src={graduation1} alt="" />
+                                <img className="h-auto max-w-full rounded-lg" src={graduation9} alt="" />
+                            </div>
+                        </div>
+                        <div className="grid gap-2">
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src={graduation10} alt="" />
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src={graduation6} alt="" />
+                            </div>
+                            <div>
+                                <img className="h-auto max-w-full rounded-lg" src={graduation1} alt="" />
                             </div>
                         </div>
                     </div>
