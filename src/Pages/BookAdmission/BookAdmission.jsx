@@ -56,8 +56,12 @@ const BookAdmission = () => {
 
             const responseData = await response.json();
 
-            if (!responseData?.acknowledged) {
-                throw new Error('Admission not acknowledged');
+            if (responseData.existing) {
+                throw new Error('Already Admitted');
+            }
+
+            if (!responseData.acknowledged) {
+                throw new Error('Admission failed. Please try again.');
             }
 
             return responseData;
@@ -77,7 +81,11 @@ const BookAdmission = () => {
             {
                 pending: 'Processing admission...',
                 success: 'College booked successfully 🎉',
-                error: 'Admission failed. Please try again.'
+                error: {
+                    render({ data }) {
+                        return data.message || 'An unknown error occurred';
+                    }
+                }
             },
             {
                 position: "top-right",
