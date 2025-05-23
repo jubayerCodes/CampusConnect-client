@@ -1,57 +1,9 @@
-import React from 'react';
+
 import { useLoaderData } from 'react-router';
 
 const CollegeDetails = () => {
 
     const college = useLoaderData()
-    console.log(college);
-
-    // const college = {
-    //     "collegeImage": "/college1.jpeg",
-    //     "collegeName": "Harbor Tech University",
-    //     "admissionDates": {
-    //         "start": "2025-06-01",
-    //         "end": "2025-08-15"
-    //     },
-    //     "admissionProcess": [
-    //         "Fill out online application form",
-    //         "Submit academic transcripts",
-    //         "Provide recommendation letters",
-    //         "Attend a virtual interview",
-    //         "Receive admission decision via email"
-    //     ],
-    //     "events": [
-    //         {
-    //             "name": "TechX Fair",
-    //             "date": "2025-09-10",
-    //             "description": "An annual expo showcasing student-led innovations in AI, Robotics, and IoT."
-    //         },
-    //         {
-    //             "name": "Hackathon",
-    //             "date": "2025-10-05",
-    //             "description": "A 48-hour hackathon that attracts developers from across the country."
-    //         }
-    //     ],
-    //     "researchHistory": {
-    //         "focusAreas": [
-    //             "Renewable Energy",
-    //             "Quantum Computing",
-    //             "Neural Interfaces"
-    //         ],
-    //         "notableProjects": [
-    //             "SolarNet: AI-optimized solar energy grid",
-    //             "QuantaSim: Simulation framework for quantum processors"
-    //         ],
-    //         "publications": 124
-    //     },
-    //     "sports": [
-    //         "Basketball",
-    //         "Swimming",
-    //         "Esports",
-    //         "Archery"
-    //     ],
-    //     "rating": 4.8
-    // }
 
     const formateDate = (dateString) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -81,7 +33,7 @@ const CollegeDetails = () => {
                             <h4 className='text-2xl font-semibold mb-2'>Events:</h4>
                             <div className='flex gap-5'>
                                 {college?.events?.map((e, idx) => (
-                                    <div className='p-4 shadow rounded-2xl'>
+                                    <div key={idx} className='p-4 shadow rounded-2xl'>
                                         <div className='flex justify-between'>
                                             <h4 className='text-xl font-semibold mb-2'>{idx + 1}. {e.name}</h4>
                                             <span>{formateDate(e?.date)}</span>

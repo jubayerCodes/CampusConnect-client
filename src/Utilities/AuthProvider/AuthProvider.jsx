@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../../lib/Firebase/firebase.config";
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, FacebookAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, FacebookAuthProvider, updateProfile } from "firebase/auth";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -34,6 +34,13 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, facebookProvider)
     }
 
+    const updateName = (fullName) => {
+        setLoading(true)
+        return updateProfile(auth.currentUser, {
+            displayName: fullName
+        })
+    }
+
 
     const logout = () => {
         setLoading(true)
@@ -50,7 +57,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             return unsubscribe()
         }
-    }, [])
+    }, [update])
 
     useEffect(() => {
         console.log("user in auth provider", user);
@@ -63,7 +70,10 @@ const AuthProvider = ({ children }) => {
         loading,
         signInWithGoogle,
         logout,
-        signInWithFacebook
+        signInWithFacebook,
+        updateName,
+        setUpdate,
+        update
     }
 
     return (

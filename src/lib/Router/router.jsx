@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/colleges/:id",
-        element: <CollegeDetails />,
+        element: <PrivateRoute><CollegeDetails /></PrivateRoute>,
         loader: async ({ params }) => fetch(`${import.meta.env.VITE_API}/colleges/${params.id}`)
       },
       {

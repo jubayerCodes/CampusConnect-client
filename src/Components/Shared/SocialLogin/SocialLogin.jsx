@@ -10,6 +10,15 @@ const SocialLogin = ({ className, from }) => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
+        console.log(user);
+
+        fetch(`${import.meta.env.VITE_API}/user`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email: user?.email, fullName: user?.displayName, address: '' })
+        })
         navigate(from)
       })
       .catch((error) => {
