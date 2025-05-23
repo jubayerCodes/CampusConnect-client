@@ -55,8 +55,6 @@ const MyCollege = () => {
 
             const responseData = await response.json();
 
-            console.log(responseData);
-
 
             if (responseData.existing) {
                 throw new Error('Review Already Exist!');
