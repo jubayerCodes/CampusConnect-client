@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { Bounce, toast } from 'react-toastify';
 import './BookAdmission.css'
 
@@ -8,6 +8,7 @@ const BookAdmission = () => {
     const { register, handleSubmit, reset } = useForm()
     const [college, setCollege] = useState({})
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const params = useParams()
 
@@ -80,7 +81,12 @@ const BookAdmission = () => {
                 }),
             {
                 pending: 'Processing admission...',
-                success: 'College booked successfully 🎉',
+                success: {
+                    render() {
+                        navigate('/my-college')
+                        return 'College booked successfully 🎉'
+                    }
+                },
                 error: {
                     render({ data }) {
                         return data.message || 'An unknown error occurred';
