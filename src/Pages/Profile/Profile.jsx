@@ -55,17 +55,17 @@ const Profile = () => {
 
     return (
         <>
-            <section className='section'>
-                <div className="my-container flex gap-10 items-center">
+            <section className='section h-screen mt-20 xl:mt-0'>
+                <div className="my-container flex flex-col md:flex-row gap-10 items-stretch md:items-center">
                     <div className="profile-img">
-                        <img src={user?.photoURL || defaultUserImg} alt="" className='w-[200px] mb-5' />
+                        <img src={user?.photoURL || defaultUserImg} alt="" className='w-full mb-5' />
                         <div className='flex justify-between'>
                             <button className="btn" onClick={() => document.getElementById('my_modal_2').showModal()}>Edit Profile</button>
                             <button className='btn btn-primary' onClick={() => logout()}>Logout</button>
                         </div>
                     </div>
                     <div>
-                        <h3 className='text-3xl mb-5'>{storedUser?.fullName}</h3>
+                        <h3 className='text-3xl font-semibold mb-2 md:mb-5'>{storedUser?.fullName}</h3>
                         <p><b>Email: </b>{storedUser?.email}</p>
                         <p><b>Address: </b>{storedUser?.address}</p>
                         <p><b>University: </b>{storedUser?.university}</p>
