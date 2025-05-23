@@ -55,7 +55,7 @@ const Profile = () => {
 
     return (
         <>
-            <section className='section h-screen mt-20 xl:mt-0'>
+            <section className='section min-h-screen mt-20 xl:mt-0'>
                 <div className="my-container flex flex-col md:flex-row gap-10 items-stretch md:items-center">
                     <div className="profile-img">
                         <img src={user?.photoURL || defaultUserImg} alt="" className='w-full mb-5' />

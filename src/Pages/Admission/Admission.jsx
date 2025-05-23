@@ -13,7 +13,7 @@ const Admission = () => {
 
     return (
         <>
-            <section className='section h-screen'>
+            <section className='section min-h-screen'>
                 <div className="my-container">
                     <h2 className='text-4xl font-semibold text-center'>Admission</h2>
 

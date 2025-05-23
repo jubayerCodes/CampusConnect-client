@@ -14,7 +14,7 @@ const Colleges = () => {
 
     return (
         <>
-            <section className='section h-screen'>
+            <section className='section min-h-screen'>
                 <div className="my-container">
                     <h2 className='text-4xl font-semibold text-center pt-10 '>Colleges</h2>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-12'>
