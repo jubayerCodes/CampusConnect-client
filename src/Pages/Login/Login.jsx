@@ -7,6 +7,8 @@ import { AuthContext } from '../../Utilities/AuthProvider/AuthProvider';
 
 const Login = () => {
 
+    const [errorMessage, setErrorMessage] = useState("")
+
     const { signUpWithEmailAndPassword, loginWithEmailAndPassword, user, loading, updateName, setUpdate, update } = useContext(AuthContext)
 
     const { register, handleSubmit, formState: { errors }, reset, watch } = useForm()
@@ -40,6 +42,9 @@ const Login = () => {
                         navigate(from)
                     })
             })
+            .catch(error => {
+                setErrorMessage(error.message);
+            })
 
         reset()
     }
@@ -51,9 +56,9 @@ const Login = () => {
             .then((result) => {
                 const user = result.user
                 navigate(from)
-            }).catch((error) => {
-                const errorMessage = error.message;
-                console.log(errorMessage);
+            })
+            .catch(error => {
+                setErrorMessage(error.message);
             })
 
         resetLogin()
@@ -70,6 +75,13 @@ const Login = () => {
                             <form onSubmit={handleSubmitLogin(handleLogin)} className={`flex-col items-stretch justify-between`}>
                                 <input {...registerLogin('email', { required: true })} placeholder='Email' className='w-full mb-5 border focus:outline-none p-2 text-sm' type="email" name="email" id="login-email-field" required />
                                 <input {...registerLogin('password', { required: true })} placeholder='Password' className='w-full mb-5 border focus:outline-none p-2 text-sm' type="password" name="password" id="login-password-field" required />
+
+                                {
+                                    errorMessage == 'Firebase: Error (auth/invalid-credential).' ? (
+                                        <span className='text-error mb-5 block'>Invalid Email/Password</span>
+                                    ) : <></>
+                                }
+
                                 <input type="submit" value="Login" className='cursor-pointer w-full mb-5 primary-btn' style={{ width: '100%' }} />
                             </form>
                             <SocialLogin from={from} className={'mt-4'} />
@@ -89,6 +101,12 @@ const Login = () => {
                                 })} placeholder='Password' className='w-full mb-5 border focus:outline-none p-2 text-sm' type="password" name="password" id="register-password-field" />
 
                                 {errors.password && <span className='form-warning'>{errors.password.message}</span>}
+
+                                {
+                                    errorMessage == 'Firebase: Error (auth/email-already-in-use).' ? (
+                                        <span className='text-error mb-5 block'>Email already in use</span>
+                                    ) : <></>
+                                }
 
                                 <input type="submit" value="Register" className='cursor-pointer w-full mb-5 primary-btn' style={{ width: '100%' }} />
                             </form>
