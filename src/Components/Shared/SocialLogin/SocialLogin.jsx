@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { AuthContext } from "../../../Utilities/AuthProvider/AuthProvider";
 import { useContext } from "react";
 
-const SocialLogin = ({ className }) => {
+const SocialLogin = ({ className, from }) => {
   const navigate = useNavigate();
   const { signInWithGoogle, signInWithFacebook } = useContext(AuthContext);
 
@@ -10,7 +10,7 @@ const SocialLogin = ({ className }) => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        navigate(from)
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -21,15 +21,12 @@ const SocialLogin = ({ className }) => {
   const handleFacebookLogin = () => {
     signInWithFacebook()
       .then(result => {
-        // The signed-in user info.
         const user = result.user;
 
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
 
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        navigate(from)
       })
       .catch((error) => {
         const errorMessage = error.message;

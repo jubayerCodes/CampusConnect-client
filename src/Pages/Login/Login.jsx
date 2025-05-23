@@ -21,12 +21,12 @@ const Login = () => {
     const [isRegister, setIsRegister] = useState(false)
 
     const handleRegister = (data) => {
-        const { email, password} = data
+        const { email, password } = data
 
         signUpWithEmailAndPassword(email, password)
             .then((result) => {
                 const user = result.user
-                console.log(user)
+                navigate(from)
             })
 
         reset()
@@ -38,7 +38,7 @@ const Login = () => {
         loginWithEmailAndPassword(email, password)
             .then((result) => {
                 const user = result.user
-                console.log(user)
+                navigate(from)
             }).catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage);
@@ -60,7 +60,7 @@ const Login = () => {
                                 <input {...registerLogin('password', { required: true })} placeholder='Password' className='w-full mb-5 border focus:outline-none p-2 text-sm' type="password" name="password" id="login-password-field" required />
                                 <input type="submit" value="Login" className='cursor-pointer w-full mb-5 primary-btn' style={{ width: '100%' }} />
                             </form>
-                            <SocialLogin className={'mt-4'} />
+                            <SocialLogin from={from} className={'mt-4'} />
                         </div>
                         <div className={`${isRegister ? '' : 'hidden'}`}>
                             <form onSubmit={handleSubmit(handleRegister)} className={`flex-col items-stretch justify-between `}>
@@ -78,7 +78,7 @@ const Login = () => {
 
                                 <input type="submit" value="Register" className='cursor-pointer w-full mb-5 primary-btn' style={{ width: '100%' }} />
                             </form>
-                            <SocialLogin className={'mt-4'} />
+                            <SocialLogin from={from} className={'mt-4'} />
                         </div>
                         <div className='flex justify-between items-center mt-5'>
                             <button onClick={() => setIsRegister(true)} className={`cursor-pointer transition hover:text-[var(--btn-bg)] ${isRegister ? 'hidden' : ''}`}>Register here!</button>
