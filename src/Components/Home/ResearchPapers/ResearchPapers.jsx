@@ -71,7 +71,7 @@ const ResearchPapers = () => {
                                 <p className="text-gray-600">Authors: {paper.authors.join(", ")}</p>
                                 <p className="text-gray-600">Year: {paper.year}</p>
 
-                                <Link to={paper.link} target="_blank" rel="noopener noreferrer" className="btn btn-block mt-4">Read More</Link>
+                                <Link to={'#'} target="_blank" rel="noopener noreferrer" className="btn btn-block mt-4">Read More</Link>
                             </div>
                         ))
                     }
