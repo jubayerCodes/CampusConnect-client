@@ -4,7 +4,7 @@ import heroBg from "../../../assets/img/convocation.jpeg";
 const Hero = () => {
     return (
         <div
-            className="hero min-min-h-screen"
+            className="hero min-h-screen"
             style={{
                 backgroundImage: `url(${heroBg})`,
             }}

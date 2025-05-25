@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const NotFoundPage = () => {
     return (
-        <div className="min-min-h-screen bg-slate-50 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
             <div className="max-w-4xl w-full bg-white rounded-xl shadow-xl overflow-hidden">
                 <div className="relative">
                     {/* Top decorative edge - notebook paper */}
